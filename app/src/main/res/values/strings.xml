@@ -4,4 +4,7 @@
     <string name="et_nom">Introdueix el teu nom</string>
     <string name="hola">Hola</string>
     <string name="bye">Adéu</string>
+    <string name="b_not">No pots amb aquesta edat</string>
+    <string name="show">SHOW</string>
+    <string name="share">SHARE</string>
 </resources>

@@ -28,6 +28,8 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         final Bundle bundle = getIntent().getExtras();
 
         rg = findViewById(R.id.rg);
@@ -47,26 +49,23 @@ public class SecondActivity extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 String prg = Integer.toString(progress);
                 tv_num.setText(prg);
-                if (progress < 18) {
+                if (progress < 18 || progress > 60) {
                     b_next.setBackgroundColor(getResources().getColor(R.color.disabled));
-                    b_next.setText("No pots amb aquesta edat");
+                    b_next.setText(R.string.b_not);
                     b_next.setEnabled(false);
                 } else {
                     b_next.setBackgroundColor(getResources().getColor(R.color.colorAccent));
                     b_next.setText(R.string.b_next);
                     b_next.setEnabled(true);
                 }
-
             }
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-
             }
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-
             }
         });
 
@@ -75,19 +74,19 @@ public class SecondActivity extends AppCompatActivity {
             public void onClick(View v) {
                 try {
                     int id = rg.getCheckedRadioButtonId();
+                    boolean hola;
                     rb = findViewById(id);
-                    Toast.makeText(SecondActivity.this, rb.getText(), Toast.LENGTH_SHORT).show();
+                    hola = rb.getId() == R.id.rb_hola;
+
                     Intent intent = new Intent(SecondActivity.this, ThirdActivity.class);
-                    intent.putExtra("nom",bundle.getString("nom"));
-                    intent.putExtra("edat",sb.getProgress());
+                    intent.putExtra("nom", bundle.getString("nom"));
+                    intent.putExtra("edat", sb.getProgress());
+                    intent.putExtra("hola", hola);
                     startActivity(intent);
-                }catch (Exception e){
+                } catch (Exception e) {
                     Toast.makeText(SecondActivity.this, "Escull una opció", Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
-
-
     }
 }
