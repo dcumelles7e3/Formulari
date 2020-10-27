@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Formulari</string>
+    <string name="b_next">NEXT STEP</string>
+    <string name="et_nom">Introdueix el teu nom</string>
+    <string name="hola">Hola</string>
+    <string name="bye">Adéu</string>
+</resources>
